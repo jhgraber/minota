@@ -27,13 +27,17 @@ def send_mail(sender,receiver,message):
 
 if __name__== "__main__":
 
+    first_name="Lucie"
+    user_name="lucieh"
     sender="lucie.hutchins@mdibl.org"
     receiver="lucie.hutchins@yahoo.com"
+    receiver="lucie.hutchins@mdibl.org"
     message = """From: LucieHut<lucie.hutchins@mdibl.org>
     To: Lucie <lucie.hutchins@yahoo.com>
     MIME-Version: 1.0
     Content-type: text/html
     Subject: MDIBL Transcriptome Workshop - October 26
+    """
     """
     body="<p>Dear "+first_name+",</p>"
     body+="<p>We have you listed as one of the attendees for MDIBL transcriptome workshop - </p>"
@@ -49,8 +53,16 @@ if __name__== "__main__":
     body+="<li>Connections to AWS resources will be provided during the workshop</li></ul></p>"
     body+="<p>We are looking forward to seeing you on Saturday, Oct 26, for this workshop</p>"
     signature="<p><hr/></p>"
-    signature="<p>Lucie Hutchins<br/>Senior Software Engineer<br/></p>"
-    
-    
+    signature+="<p>Lucie Hutchins<br/>Senior Software Engineer<br/></p>"
+    #message=message+body+signature
     """
+    try:
+        smtpObj = smtplib.SMTP('localhost')
+        smtpObj.sendmail(sender, receiver, message)
+        print ("Successfully sent email to %s"%(receiver))
+    except:
+        print ("Error: unable to send email to %s"%(receiver))
+    #send_mail(sender,receiver,message)
+    
+    
 
