@@ -13,7 +13,9 @@ then
    exit 1
 fi
 source ../config/single_reads_trinity.cfg
-
+source ../config/biocore.cfg
+source ../config/user.cfg
+USER_BASE=$MINOTA_BASE/$WS_USER_NAME
 $trinity $CMD_OPTION $READS $CPU_MEM_OPTION
 
 env
