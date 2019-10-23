@@ -28,9 +28,8 @@ if [ ${USERS[$WS_USER_NAME]+abc} ]
 then
    [ ! -d $USER_BASE ] && mkdir $USER_BASE
    user_name=${USERS[$WS_USER_NAME]}
-   cd cd ~/
+   cd ~/
    cp -R ~/minota/tools $USER_BASE/workshop_src
-   cd $USER_BASE
    echo "**********************************************"
    echo ""
    echo "$user_name, Welcome to MINOTA 2019!"
@@ -40,6 +39,7 @@ then
    echo "Your working directory is: $USER_BASE"
    echo "Your local copy of Scripts used in the workshop can be found under: $USER_BASE/workshop_src "
    echo ""
+   echo "To get started, next run the command: cd $USER_BASE "
    echo ""
    echo "And Voila!"
 else
