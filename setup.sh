@@ -28,22 +28,23 @@ if [ ${USERS[$WS_USER_NAME]+abc} ]
 then
    [ ! -d $USER_BASE ] && mkdir $USER_BASE
    user_name=${USERS[$WS_USER_NAME]}
-   echo "****************************"
+   cd cd ~/
+   cp -R ~/minota/tools $USER_BASE/workshop_src
+   cd $USER_BASE
+   echo "**********************************************"
    echo ""
    echo "$user_name, Welcome to MINOTA 2019!"
    echo "" 
-   echo "****************************"
+   echo "**********************************************"
    echo "Please Note:"
    echo "Your working directory is: $USER_BASE"
-   echo "After reading this, run the following commands on a terminal: "
-   echo "1)  cd ~/"
-   echo "2)  cp -R ~/minota $USER_BASE/workshop_src"
-   echo "3)  cd $USER_BASE "
+   echo "Your local copy of Scripts used in the workshop can be found under: $USER_BASE/workshop_src "
+   echo ""
    echo ""
    echo "And Voila!"
 else
    echo "Bad username:$WS_USER_NAME - Check that your username was updated correctely in config/user.cfg" 
-   exit
+   exit 1
 fi
 
 exit 0
