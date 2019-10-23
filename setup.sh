@@ -5,24 +5,32 @@ if [ ! -f ./config/biocore.cfg ]
 then
    echo "ERROR: ./config/biocore.cfg not found "
    exit 1
+
 fi
-if [ ! -f ./config/user.cfg ]
+WS_USER_NAME=$1
+
+if [ -z "$WS_USER_NAME" ]
 then
-   echo "ERROR: ./config/user.cfg not found "
+   echo ""
+   echo "Usage: ./setup.sh user_name"
+   echo "Where: user_name is a word composition of your first name and the  "
+   echo "       first character of your last name - all in lowercase. "
+   echo "       For example: the user_name for Lucie Hutchins would be lucieh "
+   echo ""
    exit 1
 fi
 
 source ./config/biocore.cfg
-source ./config/user.cfg
 source ./config/.users.cfg
 
 USER_BASE=$MINOTA_BASE/$WS_USER_NAME
 if [ ${USERS[$WS_USER_NAME]+abc} ]
 then
    [ ! -d $USER_BASE ] && mkdir $USER_BASE
+   user_name=${USERS[$WS_USER_NAME]}
    echo "****************************"
    echo ""
-   echo "Welcome to MINOTA 2019"
+   echo "$user_name, Welcome to MINOTA 2019!"
    echo "" 
    echo "****************************"
    echo "Please Note:"
