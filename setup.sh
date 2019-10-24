@@ -26,11 +26,12 @@ source ./config/.users.cfg
 ##Create user's working directory under
 ## ec2-user's home -- 
 cd ~/
-#USER_BASE=$MINOTA_BASE/$WS_USER_NAME
+S3_USER_BASE=$MINOTA_BASE/$WS_USER_NAME
 USER_BASE=~/$WS_USER_NAME
 if [ ${USERS[$WS_USER_NAME]+abc} ]
 then
    [ ! -d $USER_BASE ] && mkdir $USER_BASE
+   [ ! -d $S3_USER_BASE ] && mkdir $S3_USER_BASE
    user_name=${USERS[$WS_USER_NAME]}
    cd ~/
    cp -R ~/minota/tools/* $USER_BASE/workshop_src
@@ -41,11 +42,16 @@ then
    echo "**********************************************"
    echo "Please Note:"
    echo "Your working directory is: $USER_BASE"
-   echo "Your local copy of Scripts used in the workshop can be found under: $USER_BASE/workshop_src "
+   echo "Your local copy of workshop Scripts: $USER_BASE/workshop_src "
    echo ""
    echo "To get started, next run the command: cd $USER_BASE "
    echo ""
    echo "And Voila!"
+   echo ""
+   echo "FYI:"
+   echo "$USER_BASE is not a persistant storage - will be destroyed if the machine is terminated."
+   echo "However, you can make $USER_BASE persistant by copying its content to $S3_USER_BASE"
+   echo ""
 else
    echo "Bad username:$WS_USER_NAME - Check that your username was updated correctely in config/user.cfg" 
    exit 1
