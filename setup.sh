@@ -49,11 +49,12 @@ then
    echo "And Voila!"
    echo ""
    echo "FYI:"
-   echo "$USER_BASE is not a persistant storage - will be destroyed if the machine is terminated."
-   echo "However, you can make $USER_BASE persistant by copying its content to $S3_USER_BASE"
+   echo "$USER_BASE is not a persistent storage - will be destroyed if the machine is terminated."
+   echo "However, you can make $USER_BASE persistent by copying its content to $S3_USER_BASE"
    echo ""
 else
-   echo "Bad username:$WS_USER_NAME - Check that your username was updated correctely in config/user.cfg" 
+   echo "Bad username:$WS_USER_NAME - Check that your username is all in lowercase and follow the format: " 
+   echo "first_name followed by the first character of your last_name"
    exit 1
 fi
 
