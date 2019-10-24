@@ -23,13 +23,17 @@ fi
 source ./config/biocore.cfg
 source ./config/.users.cfg
 
-USER_BASE=$MINOTA_BASE/$WS_USER_NAME
+##Create user's working directory under
+## ec2-user's home -- 
+cd ~/
+#USER_BASE=$MINOTA_BASE/$WS_USER_NAME
+USER_BASE=~/$WS_USER_NAME
 if [ ${USERS[$WS_USER_NAME]+abc} ]
 then
    [ ! -d $USER_BASE ] && mkdir $USER_BASE
    user_name=${USERS[$WS_USER_NAME]}
    cd ~/
-   cp -R ~/minota/tools $USER_BASE/workshop_src
+   cp -R ~/minota/tools/* $USER_BASE/workshop_src
    echo "**********************************************"
    echo ""
    echo "$user_name, Welcome to MINOTA 2019!"
