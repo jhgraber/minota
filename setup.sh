@@ -25,7 +25,6 @@ source ./config/.users.cfg
 
 ##Create user's working directory under
 ## ec2-user's home -- 
-cd ~/
 S3_USER_BASE=$MINOTA_BASE/$WS_USER_NAME
 USER_BASE=~/$WS_USER_NAME
 if [ ${USERS[$WS_USER_NAME]+abc} ]
@@ -33,8 +32,8 @@ then
    [ ! -d $USER_BASE ] && mkdir $USER_BASE
    [ ! -d $S3_USER_BASE ] && mkdir $S3_USER_BASE
    user_name=${USERS[$WS_USER_NAME]}
-   cd ~/
-   cp -R minota/tools/*  $USER_BASE/workshop_src
+   mkdir $USER_BASE/workshop_src
+   cp -R tools/*  $USER_BASE/workshop_src/
    echo "**********************************************"
    echo ""
    echo "$user_name, Welcome to MINOTA 2019!"
